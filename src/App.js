@@ -1,24 +1,63 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+
 import './App.css';
+import config from './config';
+import load from './helpers/spreadsheet';
+
+
+
 
 class App extends Component {
+  state ={
+    posts: [],
+    error: null
+  }
+
+  componentDidMount(){
+    window.gapi.load("client", this.initClient);
+  }
+
+
+
+  initClient = () => {
+    window.gapi.client
+      .init({
+        apiKey: config.apiKey,
+        discoveryDocs: config.discoveryDocs
+      })
+      .then(()=>{
+        load(this.onLoad);
+      });
+  };
+
+  onLoad = (data, error) => {
+    if (data) {
+      const posts = data.posts;
+      this.setState({ posts });
+    } else {
+      this.setState({ error });
+    }
+  };
+
+
+
   render() {
+    const {posts, error } = this.state;
+    if (error) {
+      return <div>{this.state.error}</div>;
+    }
+
+
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          <ul>      
+            {posts.map((post, i) =>(
+              <li key={i}>
+                {post.a} {post.b}
+              </li>
+            ))}
+          </ul>
         </header>
       </div>
     );
