@@ -1,23 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import './App.css';
-import config from './config';
-import load from './helpers/spreadsheet';
-
-
-
+import "./App.css";
+import config from "./config";
+import load from "./helpers/spreadsheet";
+import Post from "./post";
 
 class App extends Component {
-  state ={
+  state = {
     posts: [],
     error: null
-  }
+  };
 
-  componentDidMount(){
+  componentDidMount() {
     window.gapi.load("client", this.initClient);
   }
-
-
 
   initClient = () => {
     window.gapi.client
@@ -25,7 +21,7 @@ class App extends Component {
         apiKey: config.apiKey,
         discoveryDocs: config.discoveryDocs
       })
-      .then(()=>{
+      .then(() => {
         load(this.onLoad);
       });
   };
@@ -39,24 +35,22 @@ class App extends Component {
     }
   };
 
-
-
   render() {
-    const {posts, error } = this.state;
+    const { posts, error } = this.state;
     if (error) {
-      return <div>{this.state.error}</div>;
+      return <div>{this.state.error.code}</div>;
     }
-
 
     return (
       <div className="App">
         <header className="App-header">
-          <ul>      
-            {posts.map((post, i) =>(
-              <li key={i}>
-                {post.a} {post.b}
-              </li>
-            ))}
+          <ul>
+            {posts
+              .slice(0)
+              .reverse()
+              .map((post, i) => (
+                <Post data={post} />
+              ))}
           </ul>
         </header>
       </div>

@@ -1,21 +1,22 @@
 import config from "../config";
 
-
 export default function load(callback) {
   window.gapi.client.load("sheets", "v4", () => {
     window.gapi.client.sheets.spreadsheets.values
       .get({
         spreadsheetId: config.spreadsheetId,
-        range: "Taulukko1!A1:D100"
+        range: "Taulukko1!A2:D100"
       })
       .then(
         response => {
           const data = response.result.values;
-          const posts = data.map(post => ({
-            a: post[0],
-            b: post[1],
-            c: post[2]
-          })) || [];
+          const posts =
+            data.map(post => ({
+              id: post[0],
+              date: post[1],
+              title: post[2],
+              post: post[3]
+            })) || [];
           callback({
             posts
           });
@@ -26,4 +27,3 @@ export default function load(callback) {
       );
   });
 }
-
