@@ -1,9 +1,12 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import "./App.css";
 import config from "./config";
 import load from "./helpers/spreadsheet";
 import Post from "./post";
+import Article from "./article";
+import Header from "./header";
 
 class App extends Component {
   state = {
@@ -43,16 +46,15 @@ class App extends Component {
 
     return (
       <div className="App">
-        <header className="App-header">
-          <ul>
-            {posts
-              .slice(0)
-              .reverse()
-              .map((post, i) => (
-                <Post data={post} />
-              ))}
-          </ul>
-        </header>
+        <Header />
+        <ul>
+          {posts
+            .slice(0)
+            .reverse()
+            .map((post, i) => (
+              <Post data={post} />
+            ))}
+        </ul>
       </div>
     );
   }

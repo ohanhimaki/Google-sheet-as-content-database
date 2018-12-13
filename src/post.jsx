@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class Posts extends Component {
   state = {};
@@ -7,11 +8,9 @@ class Posts extends Component {
     console.log(this.props);
     return (
       <div class="posts">
-        <a href={this.props.data.id}>
-          <h2>{this.props.data.title}</h2>
+        <h2>{this.props.data.title}</h2>
 
-          <p>{this.props.data.post}</p>
-        </a>
+        <p>{this.props.data.post}</p>
       </div>
     );
   }
