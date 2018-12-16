@@ -7,14 +7,8 @@ class Article extends Component {
   };
 
   render() {
-    console.log(this.props.match.params.id);
-    console.log(this.props.data);
-
-    const articleId = "6";
-    console.log(articleId);
-
+    const articleId = this.props.match.params.id;
     const article = this.article(articleId);
-    console.log(this.article(articleId));
 
     if (article) {
       return (
