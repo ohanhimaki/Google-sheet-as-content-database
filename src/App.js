@@ -1,12 +1,14 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 import "./App.css";
 import config from "./config";
 import load from "./helpers/spreadsheet";
-import Post from "./post";
-import Article from "./article";
-import Header from "./header";
+
+import Footer from "./components/footer";
+import Header from "./components/header";
+import Posts from "./components/posts";
+import Article from "./components/article";
 
 class App extends Component {
   state = {
@@ -41,20 +43,27 @@ class App extends Component {
   render() {
     const { posts, error } = this.state;
     if (error) {
+      console.log(this.state.error);
       return <div>{this.state.error.code}</div>;
     }
 
     return (
       <div className="App">
         <Header />
-        <ul>
-          {posts
-            .slice(0)
-            .reverse()
-            .map((post, i) => (
-              <Post data={post} />
-            ))}
-        </ul>
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={props => <Posts {...props} data={posts} />}
+          />
+
+          <Route
+            path="/post/:id"
+            render={props => <Article {...props} data={posts} />}
+          />
+        </Switch>
+
+        <Footer />
       </div>
     );
   }
