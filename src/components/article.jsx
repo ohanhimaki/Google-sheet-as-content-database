@@ -13,7 +13,10 @@ class Article extends Component {
     if (article) {
       return (
         <div>
-          <h1>{article.title})</h1>
+          <div class="title">
+            <h1>{article.title})</h1>
+          </div>
+          <div class="article">{article.post}</div>
         </div>
       );
     }
