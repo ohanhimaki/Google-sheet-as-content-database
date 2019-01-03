@@ -1,3 +1,7 @@
+Tutorials and guides used:<br>
+Google Sheets API: [Building a React app with Google Sheets API and deploying to Netlify](https://blog.416serg.me/building-an-app-using-google-sheets-api-react-d69681d22ce1)<br>
+React Router: [A Simple React Router v4 Tutorial](https://medium.com/@pshrmn/a-simple-react-router-v4-tutorial-7f23ff27adf)<br>
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
