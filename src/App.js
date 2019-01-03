@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, BrowserRouter } from "react-router-dom";
 
 import "./App.css";
 import config from "./config";
@@ -50,18 +50,20 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={props => <Posts {...props} data={posts} />}
-          />
+        <BrowserRouter>
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={props => <Posts {...props} data={posts} />}
+            />
 
-          <Route
-            path="/post/:id"
-            render={props => <Article {...props} data={posts} />}
-          />
-        </Switch>
+            <Route
+              path="/post/:id"
+              render={props => <Article {...props} data={posts} />}
+            />
+          </Switch>
+        </BrowserRouter>
 
         <Footer />
       </div>
