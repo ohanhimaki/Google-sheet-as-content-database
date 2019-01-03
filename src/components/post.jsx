@@ -7,7 +7,7 @@ class Posts extends Component {
   render() {
     return (
       <Link to={`/post/${this.props.data.id}`}>
-        <div class="posts">
+        <div className="posts">
           <h2>{this.props.data.title}</h2>
 
           <p>{this.props.data.post}</p>

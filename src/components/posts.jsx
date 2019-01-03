@@ -7,7 +7,7 @@ class Posts extends Component {
   render() {
     const posts = this.props.data;
     return (
-      <div class="post">
+      <div className="post">
         {posts
           .slice(0)
           .reverse()

@@ -4,7 +4,7 @@ class Footer extends Component {
   state = {};
   render() {
     return (
-      <div class="footer">
+      <div className="footer">
         <p>Powered by React</p>
       </div>
     );
