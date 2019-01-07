@@ -7,13 +7,15 @@ class Posts extends Component {
   render() {
     const posts = this.props.data;
     return (
-      <div className="post">
-        {posts
-          .slice(0)
-          .reverse()
-          .map((post, i) => (
-            <Post data={post} />
-          ))}
+      <div className="row">
+        <div class="col-md-12">
+          {posts
+            .slice(0)
+            .reverse()
+            .map((post, i) => (
+              <Post data={post} />
+            ))}
+        </div>
       </div>
     );
   }

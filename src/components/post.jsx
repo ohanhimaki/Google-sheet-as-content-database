@@ -7,10 +7,10 @@ class Posts extends Component {
   render() {
     return (
       <Link to={`/post/${this.props.data.id}`}>
-        <div className="posts">
-          <h2>{this.props.data.title}</h2>
+        <div className="card flex-md-row mb-4 shadow-sm h-md-250">
+          <h2 className="text-dark">{this.props.data.title}</h2>
 
-          <p>{this.props.data.post}</p>
+          <p className="text-dark">{this.props.data.post}</p>
         </div>
       </Link>
     );

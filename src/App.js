@@ -50,20 +50,22 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <BrowserRouter>
-          <Switch>
-            <Route
-              exact
-              path="/"
-              render={props => <Posts {...props} data={posts} />}
-            />
+        <div className="container">
+          <BrowserRouter>
+            <Switch>
+              <Route
+                exact
+                path="/"
+                render={props => <Posts {...props} data={posts} />}
+              />
 
-            <Route
-              path="/post/:id"
-              render={props => <Article {...props} data={posts} />}
-            />
-          </Switch>
-        </BrowserRouter>
+              <Route
+                path="/post/:id"
+                render={props => <Article {...props} data={posts} />}
+              />
+            </Switch>
+          </BrowserRouter>
+        </div>
 
         <Footer />
       </div>

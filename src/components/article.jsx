@@ -12,7 +12,7 @@ class Article extends Component {
 
     if (article) {
       return (
-        <div>
+        <div className="blog-post">
           <div className="title">
             <h1>{article.title})</h1>
           </div>
